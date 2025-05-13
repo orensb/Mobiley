@@ -156,19 +156,19 @@ class Solution:
     # Question 5: Which protocols have at least one message in the session with mismatch between the expected size integer and the actual message content size?
     def q5(self) -> List[str]:
         data = self.convert_txt_to_pd()
+        dic = {}
         for idx , row in data.iterrows():
             # print(row['Message Size'])
-            dic = {}
             data_split = row['Data'].split(' ')
             # print(len(data_split)-1)
-            # print(type(row['Message Size']))
             # print(row['Message Size'])
             if (len(data_split)-1) != int(row['Message Size']):
-                if row['Protocol ID'] not in dic:
-                    dic[row['Protocol ID']] = 1
-                    print('Hi')
+                if row['Protocol ID'] in dic:
+                    # print(row['Protocol ID'])
+                    dic[row['Protocol ID']] += 1
+                    # print('Hi')
                 else:
-                    dic[row['Protocol ID']] +=1
+                    dic[row['Protocol ID']] =1
 
         print(dic)
 
