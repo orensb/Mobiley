@@ -6,6 +6,7 @@ class Solution:
     def __init__(self, data_file_path: str, protocol_json_path: str):
         self.data_file_path = data_file_path
         self.protocol_json_path = protocol_json_path
+        
        
 
 
@@ -175,7 +176,15 @@ class Solution:
 
     # Question 6: Which protocols are marked as non dynamic_size in protocol.json, but appear with inconsistent expected message sizes Integer in the data file?
     def q6(self) -> List[str]:
-        pass
+        with open(self.protocol_json_path,'r') as f:
+            json_file = json.load(f)
+        data_file = self.convert_txt_to_pd()
+        # find all the uniqe for grouped map by Protocal and size
+        # then if it's more then 1 , i check with 'dynamic_size'
+
+
+        
+        
 
 sol = Solution('data.txt' , 'protocol.json')
 (sol.q5())
